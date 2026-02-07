@@ -5,20 +5,10 @@ class LottoBall extends HTMLElement {
         const number = this.getAttribute('number');
         
         const group = Math.floor((parseInt(number, 10) - 1) / 10) * 10 + 1;
-        
+        this.setAttribute('data-number-group', group); // Re-added this crucial line
+
         const ball = document.createElement('div');
         ball.textContent = number;
-        
-        // 색상 매핑
-        const colorMap = {
-            1: '#fbc400',   // 노랑
-            10: '#69c8f2',  // 파랑
-            20: '#ff7272',  // 빨강
-            30: '#aaa',     // 회색
-            40: '#b0d840'   // 초록
-        };
-        
-        const ballColor = colorMap[group] || '#eee';
         
         const style = document.createElement('style');
         style.textContent = `
@@ -26,23 +16,26 @@ class LottoBall extends HTMLElement {
                 display: inline-block;
                 width: 60px;
                 height: 60px;
-                margin: 5px;
-            }
-            div {
-                width: 100%;
-                height: 100%;
                 line-height: 60px;
                 border-radius: 50%;
-                background-color: ${ballColor};
+                background-color: var(--ball-color, #eee); /* Rely on external CSS for color */
                 color: white;
                 font-size: 1.5rem;
                 font-weight: bold;
                 text-align: center;
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-                transition: transform 0.3s ease;
+                transition: transform 0.3s ease; /* Re-added transition to host */
+                margin: 5px; /* Added margin here for consistent spacing */
             }
-            div:hover {
-                transform: scale(1.1);
+            div {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            :host(:hover) {
+                transform: scale(1.1); /* Hover effect on host */
             }
         `;
         
