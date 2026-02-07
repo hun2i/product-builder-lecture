@@ -1,16 +1,24 @@
-
 class LottoBall extends HTMLElement {
     constructor() {
         super();
         const shadow = this.attachShadow({ mode: 'open' });
         const number = this.getAttribute('number');
         
-        // 이 부분이 중요합니다! 속성을 host에 직접 세팅해줘야 CSS가 먹힙니다.
         const group = Math.floor((parseInt(number, 10) - 1) / 10) * 10 + 1;
-        this.setAttribute('data-number-group', group); 
-
+        
         const ball = document.createElement('div');
         ball.textContent = number;
+        
+        // 색상 매핑
+        const colorMap = {
+            1: '#fbc400',   // 노랑
+            10: '#69c8f2',  // 파랑
+            20: '#ff7272',  // 빨강
+            30: '#aaa',     // 회색
+            40: '#b0d840'   // 초록
+        };
+        
+        const ballColor = colorMap[group] || '#eee';
         
         const style = document.createElement('style');
         style.textContent = `
@@ -18,16 +26,26 @@ class LottoBall extends HTMLElement {
                 display: inline-block;
                 width: 60px;
                 height: 60px;
+                margin: 5px;
+            }
+            div {
+                width: 100%;
+                height: 100%;
                 line-height: 60px;
                 border-radius: 50%;
-                background-color: var(--ball-color, #eee);
+                background-color: ${ballColor};
                 color: white;
                 font-size: 1.5rem;
                 font-weight: bold;
                 text-align: center;
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s ease;
+            }
+            div:hover {
+                transform: scale(1.1);
             }
         `;
+        
         shadow.appendChild(style);
         shadow.appendChild(ball);
     }
@@ -36,17 +54,15 @@ class LottoBall extends HTMLElement {
 customElements.define('lotto-ball', LottoBall);
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Theme Toggle Logic
     const themeToggleButton = document.getElementById('theme-toggle-btn');
     const body = document.body;
 
-    // Apply saved theme on load
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         body.classList.add(savedTheme);
     }
 
-    if (themeToggleButton) { // Check if button exists before adding event listener
+    if (themeToggleButton) {
         themeToggleButton.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             if (body.classList.contains('dark-mode')) {
@@ -57,9 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Lotto Generation Logic
     const generateButton = document.getElementById('generate-btn');
-    if (generateButton) { // Check if button exists before adding event listener
+    if (generateButton) {
         generateButton.addEventListener('click', () => {
             const resultContainer = document.getElementById('result-container');
             resultContainer.innerHTML = '';

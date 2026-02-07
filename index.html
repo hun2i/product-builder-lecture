@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,7 @@
         <button id="generate-btn">Generate Numbers</button>
         <div id="result-container"></div>
 
-        <hr style="margin: 40px 0; border-color: var(--main-color);">
+        <hr class="divider">
 
         <h2>Partnership Inquiry</h2>
         <form action="https://formspree.io/f/mqedkpdv" method="POST" class="contact-form">
@@ -23,27 +22,28 @@
             <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
             <button type="submit">Send Inquiry</button>
         </form>
+
+        <hr class="divider">
+
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
     </div>
+    
     <script src="main.js" type="module"></script>
 
-    <div id="disqus_thread"></div>
     <script>
-        /**
-        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-        
         var disqus_config = function () {
-        this.page.url = 'https://hun2i.github.io/product-builder-lecture/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'lotto-generator-homepage'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.page.url = 'https://hun2i.github.io/product-builder-lecture/';
+            this.page.identifier = 'lotto-generator-homepage';
         };
         
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://pang-3.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://pang-3.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
         })();
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> <script id="dsq-count-scr" src="//pang-3.disqus.com/count.js" async></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </body>
 </html>
