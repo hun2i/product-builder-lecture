@@ -62,7 +62,37 @@ h1 {
     color: var(--white);
 }
 
-#recommend-menu-btn {
+/* Teachable Machine specific styles */
+#webcam-container {
+    margin-top: 20px;
+    border: 2px solid var(--main-color);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the canvas corners are rounded */
+    display: inline-block; /* To respect text-align: center in container */
+}
+
+#webcam-container canvas {
+    display: block; /* Remove extra space below canvas */
+    max-width: 100%;
+    height: auto;
+}
+
+#label-container {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: var(--main-color);
+}
+
+#label-container div {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: var(--bg-color);
+    box-shadow: 0 1px 3px var(--shadow-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button {
     background-color: var(--accent-color);
     color: var(--white);
     border: none;
@@ -72,80 +102,10 @@ h1 {
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+    margin-top: 20px; /* Adjust spacing for buttons */
 }
 
-#recommend-menu-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
-}
-
-#menu-recommendation-container {
-    margin-top: 30px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--main-color);
-}
-
-.recommended-menu-text {
-    padding: 10px 20px;
-    border-radius: 8px;
-    background-color: var(--bg-color);
-    display: inline-block;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    transition: background-color 0.3s, color 0.3s;
-}
-
-
-h2 {
-    font-size: 2rem;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    color: var(--main-color);
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-    padding: 12px;
-    border: 1px solid var(--shadow-color);
-    border-radius: 8px;
-    font-size: 1rem;
-    background-color: var(--white);
-    color: var(--main-color);
-    transition: border-color 0.3s, background-color 0.3s;
-}
-
-.contact-form input[type="text"]:focus,
-.contact-form input[type="email"]:focus,
-.contact-form textarea:focus {
-    border-color: var(--accent-color);
-    outline: none;
-}
-
-.contact-form textarea {
-    resize: vertical;
-}
-
-.contact-form button[type="submit"] {
-    background-color: var(--accent-color);
-    color: var(--white);
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
-}
-
-.contact-form button[type="submit"]:hover {
+button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
 }
@@ -154,10 +114,5 @@ h2 {
     margin: 40px 0;
     border: none;
     border-top: 1px solid var(--shadow-color);
-}
-
-/* Disqus container styling */
-#disqus_thread {
-    margin-top: 20px;
 }
 
