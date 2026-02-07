@@ -4,13 +4,15 @@ class LottoBall extends HTMLElement {
         super();
         const shadow = this.attachShadow({ mode: 'open' });
         const number = this.getAttribute('number');
+        
+        // 이 부분이 중요합니다! 속성을 host에 직접 세팅해줘야 CSS가 먹힙니다.
         const group = Math.floor((parseInt(number, 10) - 1) / 10) * 10 + 1;
+        this.setAttribute('data-number-group', group); 
 
         const ball = document.createElement('div');
         ball.textContent = number;
         
         const style = document.createElement('style');
-        // Simplified CSS variables for shadow DOM to avoid potential issues with --white default
         style.textContent = `
             :host {
                 display: inline-block;
@@ -19,19 +21,13 @@ class LottoBall extends HTMLElement {
                 line-height: 60px;
                 border-radius: 50%;
                 background-color: var(--ball-color, #eee);
-                color: white; /* Explicitly white for numbers inside balls */
+                color: white;
                 font-size: 1.5rem;
                 font-weight: bold;
                 text-align: center;
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-                transition: transform 0.3s ease;
-            }
-            div {
-                color: white; /* Ensure text color is white */
             }
         `;
-
-        this.dataset.numberGroup = group;
         shadow.appendChild(style);
         shadow.appendChild(ball);
     }
