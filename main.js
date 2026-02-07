@@ -10,6 +10,7 @@ class LottoBall extends HTMLElement {
         ball.textContent = number;
         
         const style = document.createElement('style');
+        // Simplified CSS variables for shadow DOM to avoid potential issues with --white default
         style.textContent = `
             :host {
                 display: inline-block;
@@ -18,7 +19,7 @@ class LottoBall extends HTMLElement {
                 line-height: 60px;
                 border-radius: 50%;
                 background-color: var(--ball-color, #eee);
-                color: var(--white, #333);
+                color: white; /* Explicitly white for numbers inside balls */
                 font-size: 1.5rem;
                 font-weight: bold;
                 text-align: center;
@@ -26,7 +27,7 @@ class LottoBall extends HTMLElement {
                 transition: transform 0.3s ease;
             }
             div {
-                color: white;
+                color: white; /* Ensure text color is white */
             }
         `;
 
@@ -38,6 +39,26 @@ class LottoBall extends HTMLElement {
 
 customElements.define('lotto-ball', LottoBall);
 
+// Theme Toggle Logic
+const themeToggleButton = document.getElementById('theme-toggle-btn');
+const body = document.body;
+
+// Apply saved theme on load
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    body.classList.add(savedTheme);
+}
+
+themeToggleButton.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark-mode');
+    } else {
+        localStorage.removeItem('theme');
+    }
+});
+
+// Lotto Generation Logic
 document.getElementById('generate-btn').addEventListener('click', () => {
     const resultContainer = document.getElementById('result-container');
     resultContainer.innerHTML = '';
@@ -56,21 +77,3 @@ document.getElementById('generate-btn').addEventListener('click', () => {
     });
 });
 
-const themeToggleButton = document.getElementById('theme-toggle-btn');
-const body = document.body;
-
-themeToggleButton.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark-mode');
-    } else {
-        localStorage.removeItem('theme');
-    }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        body.classList.add(savedTheme);
-    }
-});
