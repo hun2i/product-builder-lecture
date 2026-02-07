@@ -62,7 +62,7 @@ h1 {
     color: var(--white);
 }
 
-#generate-btn {
+#recommend-menu-btn {
     background-color: var(--accent-color);
     color: var(--white);
     border: none;
@@ -74,40 +74,27 @@ h1 {
     box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
 }
 
-#generate-btn:hover {
+#recommend-menu-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
 }
 
-#result-container {
+#menu-recommendation-container {
     margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-lotto-ball {
-    --ball-color: #eee;
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    border-radius: 50%;
-    background-color: var(--ball-color);
-    color: var(--white);
     font-size: 1.5rem;
     font-weight: bold;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    color: var(--main-color);
 }
 
-lotto-ball[data-number-group="1"] { --ball-color: #fbc400; }
-lotto-ball[data-number-group="10"] { --ball-color: #69c8f2; }
-lotto-ball[data-number-group="20"] { --ball-color: #ff7272; }
-lotto-ball[data-number-group="30"] { --ball-color: #aaa; }
-lotto-ball[data-number-group="40"] { --ball-color: #b0d840; }
+.recommended-menu-text {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    display: inline-block;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
 
 h2 {
     font-size: 2rem;
@@ -167,10 +154,5 @@ h2 {
     margin: 40px 0;
     border: none;
     border-top: 1px solid var(--shadow-color);
-}
-
-/* Disqus container styling */
-#disqus_thread {
-    margin-top: 20px;
 }
 
