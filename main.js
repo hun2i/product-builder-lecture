@@ -39,41 +39,49 @@ class LottoBall extends HTMLElement {
 
 customElements.define('lotto-ball', LottoBall);
 
-// Theme Toggle Logic
-const themeToggleButton = document.getElementById('theme-toggle-btn');
-const body = document.body;
+document.addEventListener('DOMContentLoaded', () => {
+    // Theme Toggle Logic
+    const themeToggleButton = document.getElementById('theme-toggle-btn');
+    const body = document.body;
 
-// Apply saved theme on load
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    body.classList.add(savedTheme);
-}
-
-themeToggleButton.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark-mode');
-    } else {
-        localStorage.removeItem('theme');
-    }
-});
-
-// Lotto Generation Logic
-document.getElementById('generate-btn').addEventListener('click', () => {
-    const resultContainer = document.getElementById('result-container');
-    resultContainer.innerHTML = '';
-    const numbers = new Set();
-
-    while (numbers.size < 6) {
-        numbers.add(Math.floor(Math.random() * 45) + 1);
+    // Apply saved theme on load
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        body.classList.add(savedTheme);
     }
 
-    const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
+    if (themeToggleButton) { // Check if button exists before adding event listener
+        themeToggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark-mode');
+            } else {
+                localStorage.removeItem('theme');
+            }
+        });
+    }
 
-    sortedNumbers.forEach(number => {
-        const lottoBall = document.createElement('lotto-ball');
-        lottoBall.setAttribute('number', number);
-        resultContainer.appendChild(lottoBall);
-    });
+
+    // Lotto Generation Logic
+    const generateButton = document.getElementById('generate-btn');
+    if (generateButton) { // Check if button exists before adding event listener
+        generateButton.addEventListener('click', () => {
+            const resultContainer = document.getElementById('result-container');
+            resultContainer.innerHTML = '';
+            const numbers = new Set();
+
+            while (numbers.size < 6) {
+                numbers.add(Math.floor(Math.random() * 45) + 1);
+            }
+
+            const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
+
+            sortedNumbers.forEach(number => {
+                const lottoBall = document.createElement('lotto-ball');
+                lottoBall.setAttribute('number', number);
+                resultContainer.appendChild(lottoBall);
+            });
+        });
+    }
 });
 
