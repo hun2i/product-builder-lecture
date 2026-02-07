@@ -156,3 +156,8 @@ h2 {
     border-top: 1px solid var(--shadow-color);
 }
 
+/* Disqus container styling */
+#disqus_thread {
+    margin-top: 20px;
+}
+

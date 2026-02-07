@@ -22,8 +22,29 @@
             <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
             <button type="submit">Send Inquiry</button>
         </form>
+
+        <hr class="divider">
+
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
     </div>
     
     <script src="main.js" type="module"></script>
+
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'https://hun2i.github.io/product-builder-lecture/';
+            this.page.identifier = 'menu-recommender-homepage'; // Updated identifier
+        };
+        
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://pang-3.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//pang-3.disqus.com/count.js" async></script>
 </body>
 </html>
