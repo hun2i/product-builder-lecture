@@ -3,26 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>동물상 테스트</title>
+    <title>Menu Recommender</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>동물상 테스트</h1>
+        <div class="top-right-nav">
+            <a href="animal-test.html" class="nav-button">동물상 테스트</a>
+        </div>
+        <h1>오늘 저녁 뭐먹지?</h1>
         <button id="theme-toggle-btn">Toggle Theme</button>
-        <button id="animal-test-toggle-btn">동물상 테스트</button>
+        <button id="recommend-menu-btn">메뉴추천받기</button>
+        <div id="menu-recommendation-container"></div>
+
         <hr class="divider">
 
-        <div id="animal-test-section" style="display:none;">
-            <div>Teachable Machine Image Model</div>
-            <button type="button" onclick="init()">Start</button>
-            <div id="webcam-container"></div>
-            <div id="label-container"></div>
-        </div>
+        <h2>Partnership Inquiry</h2>
+        <form action="https://formspree.io/f/mqedkpdv" method="POST" class="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Inquiry</button>
+        </form>
+
+        <hr class="divider">
+
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
     </div>
     
     <script src="main.js" type="module"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'https://hun2i.github.io/product-builder-lecture/';
+            this.page.identifier = 'menu-recommender-homepage'; // Updated identifier
+        };
+        
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://pang-3.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//pang-3.disqus.com/count.js" async></script>
 </body>
 </html>
