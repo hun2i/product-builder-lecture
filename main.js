@@ -78,31 +78,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-
-    // Disqus Loading Logic
-    const disqusContainer = document.createElement('div');
-    disqusContainer.id = 'disqus_thread';
-    document.body.appendChild(disqusContainer);
-
-    var disqus_config = function () {
-        this.page.url = 'https://hun2i.github.io/product-builder-lecture/';
-        this.page.identifier = 'lotto-generator-homepage';
-    };
-
-    (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://pang-3.disqus.com/embed.js';
-        s.async = true;
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-    
-    (function() {
-        var d = document, s = d.createElement('script');
-        s.id = 'dsq-count-scr';
-        s.src = '//pang-3.disqus.com/count.js';
-        s.async = true;
-        (d.head || d.body).appendChild(s);
-    })();
 });
-
