@@ -184,3 +184,59 @@ h2 {
     margin-top: 20px;
 }
 
+/* Site Header and Footer */
+.site-header, .site-footer {
+    width: 100%;
+    background-color: var(--white);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    padding: 15px 0;
+    text-align: center;
+    z-index: 100;
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.site-footer {
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+
+body {
+    padding-top: 80px; /* Add padding to body to prevent content from being hidden by fixed header */
+}
+
+.site-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--main-color);
+    font-size: 1rem;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.site-footer .nav-item {
+    font-size: 0.9rem;
+}
+
+.site-footer p {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #888;
+}
+

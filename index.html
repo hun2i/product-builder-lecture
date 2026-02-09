@@ -10,10 +10,14 @@
     <meta name="google-adsense-account" content="ca-pub-9743991772231585">
 </head>
 <body>
+    <header class="site-header">
+        <nav class="site-nav">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="animal-test.html" class="nav-item">동물상 테스트</a>
+        </nav>
+    </header>
+
     <div class="container">
-        <div class="top-right-nav">
-            <a href="animal-test.html" class="nav-button">동물상 테스트</a>
-        </div>
         <h1>오늘 저녁 뭐먹지?</h1>
         <button id="theme-toggle-btn">Toggle Theme</button>
         <button id="recommend-menu-btn">메뉴추천받기</button>
@@ -21,26 +25,25 @@
 
         <hr class="divider">
 
-        <h2>Partnership Inquiry</h2>
-        <form action="https://formspree.io/f/mqedkpdv" method="POST" class="contact-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit">Send Inquiry</button>
-        </form>
-
-        <hr class="divider">
-
         <h2>Comments</h2>
         <div id="disqus_thread"></div>
     </div>
+
+    <footer class="site-footer">
+        <nav class="site-nav">
+            <a href="about.html" class="nav-item">About Us</a>
+            <a href="contact.html" class="nav-item">Contact Us</a>
+            <a href="privacy.html" class="nav-item">Privacy Policy</a>
+        </nav>
+        <p>&copy; 2026 오늘 뭐먹지?. All Rights Reserved.</p>
+    </footer>
     
     <script src="main.js" type="module"></script>
 
     <script>
         var disqus_config = function () {
             this.page.url = 'https://hun2i.github.io/product-builder-lecture/';
-            this.page.identifier = 'menu-recommender-homepage'; // Updated identifier
+            this.page.identifier = 'menu-recommender-homepage';
         };
         
         (function() {

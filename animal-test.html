@@ -10,9 +10,15 @@
     <meta name="google-adsense-account" content="ca-pub-9743991772231585">
 </head>
 <body>
+    <header class="site-header">
+        <nav class="site-nav">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="animal-test.html" class="nav-item active">동물상 테스트</a>
+        </nav>
+    </header>
+
     <div class="container">
         <h1>동물상 테스트</h1>
-        <p><a href="index.html">메인으로 돌아가기</a></p>
         <hr class="divider">
         
         <div id="status-message">Teachable Machine Image Model</div>
@@ -20,6 +26,15 @@
         <div id="webcam-container"></div>
         <div id="label-container"></div>
     </div>
+
+    <footer class="site-footer">
+        <nav class="site-nav">
+            <a href="about.html" class="nav-item">About Us</a>
+            <a href="contact.html" class="nav-item">Contact Us</a>
+            <a href="privacy.html" class="nav-item">Privacy Policy</a>
+        </nav>
+        <p>&copy; 2026 오늘 뭐먹지?. All Rights Reserved.</p>
+    </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
