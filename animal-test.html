@@ -31,9 +31,9 @@
             const flip = true;
             webcam = new tmImage.Webcam(200, 200, flip);
             await webcam.setup();
+            document.getElementById("webcam-container").appendChild(webcam.canvas);
             await webcam.play();
             window.requestAnimationFrame(loop);
-            document.getElementById("webcam-container").appendChild(webcam.canvas);
             labelContainer = document.getElementById("label-container");
             for (let i = 0; i < maxPredictions; i++) {
                 labelContainer.appendChild(document.createElement("div"));
