@@ -15,116 +15,99 @@ body.dark-mode {
     --shadow-color: rgba(0, 0, 0, 0.4);
 }
 
+html, body {
+    height: 100%; /* Ensure html and body take full height */
+    margin: 0;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--main-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange items vertically */
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%),
                       linear-gradient(-45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%),
                       linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.02) 75%),
                       linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.02) 75%);
     background-size: 20px 20px;
     transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6; /* Improve readability */
+    font-size: 1.1rem; /* Increase base font size */
+}
+
+main {
+    flex-grow: 1; /* Allow main content to grow and push footer down */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .container {
-    position: relative; /* Needed for absolute positioning of child */
     text-align: center;
     background-color: var(--white);
     padding: 40px;
     border-radius: 16px;
     box-shadow: 0 10px 25px var(--shadow-color), 0 5px 10px rgba(0,0,0,0.05);
-    max-width: 500px;
+    max-width: 768px; /* Increased max-width for more content space */
     width: 90%;
+    margin: 20px auto; /* Center container and add vertical margin */
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.top-right-nav {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+h1 {
+    font-size: 2.8rem; /* Slightly larger h1 */
+    margin-bottom: 25px;
+    color: var(--main-color);
 }
 
-.nav-button {
-    text-decoration: none;
-    padding: 8px 15px;
-    background-color: var(--main-color);
-    color: var(--bg-color);
-    border-radius: 6px;
-    font-size: 0.9rem;
-    transition: background-color 0.3s, color 0.3s;
+h2 {
+    font-size: 2.2rem; /* Slightly larger h2 */
+    margin-top: 45px;
+    margin-bottom: 25px;
+    color: var(--main-color);
 }
 
-.nav-button:hover {
+button {
     background-color: var(--accent-color);
     color: var(--white);
+    border: none;
+    padding: 18px 35px; /* Larger padding for buttons */
+    font-size: 1.3rem; /* Slightly larger font for buttons */
+    border-radius: 10px; /* Softer border-radius */
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+    box-shadow: 0 5px 18px rgba(76, 175, 80, 0.4); /* Enhanced shadow */
 }
 
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+button:hover {
+    transform: translateY(-3px); /* More pronounced lift effect */
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.6);
 }
+
 #theme-toggle-btn {
     background-color: var(--main-color);
     color: var(--bg-color);
     border: 1px solid var(--accent-color);
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    margin-bottom: 20px;
+    padding: 12px 25px; /* Adjust padding */
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px var(--shadow-color); /* Add shadow */
 }
+
 #theme-toggle-btn:hover {
     background-color: var(--accent-color);
     color: var(--white);
-}
-
-#recommend-menu-btn {
-    background-color: var(--accent-color);
-    color: var(--white);
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
-}
-
-#recommend-menu-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
-}
-
-#menu-recommendation-container {
-    margin-top: 30px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--main-color);
+    box-shadow: 0 4px 15px var(--accent-color);
 }
 
 .recommended-menu-text {
-    padding: 10px 20px;
-    border-radius: 8px;
-    background-color: var(--bg-color);
-    display: inline-block;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    transition: background-color 0.3s, color 0.3s;
+    padding: 12px 25px; /* Adjust padding */
+    border-radius: 10px; /* Softer border-radius */
+    font-size: 1.6rem; /* Adjust font size */
 }
 
-
-h2 {
-    font-size: 2rem;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    color: var(--main-color);
-}
 
 .contact-form {
     display: flex;
