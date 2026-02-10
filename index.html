@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEP9Z4LRQY"></script>
@@ -12,7 +12,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Recommender</title>
+    <title>오늘 뭐먹지?</title>
     <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9743991772231585"
      crossorigin="anonymous"></script>
@@ -20,43 +20,75 @@
 </head>
 <body>
     <header class="site-header">
-        <nav class="site-nav">
-            <a href="index.html" class="nav-item">Home</a>
-            <a href="animal-test.html" class="nav-item">동물상 테스트</a>
-        </nav>
+        <div class="header-inner">
+            <a href="index.html" class="site-brand">
+                <span class="brand-emoji">🍽️</span>
+                <span>오늘 뭐먹지?</span>
+            </a>
+            <div class="header-right">
+                <nav class="site-nav">
+                    <a href="index.html" class="nav-item active">홈</a>
+                    <a href="animal-test.html" class="nav-item">동물상 테스트</a>
+                </nav>
+                <button id="theme-toggle-btn" class="theme-toggle" aria-label="테마 전환">🌙</button>
+            </div>
+        </div>
     </header>
 
     <main>
-        <div class="container">
-            <h1>오늘 저녁 뭐먹지?</h1>
-            <button id="theme-toggle-btn">Toggle Theme</button>
-            <button id="recommend-menu-btn">메뉴추천받기</button>
-            <div id="menu-recommendation-container"></div>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <span class="hero-emoji">🤔</span>
+            <h1 class="hero-title">오늘 저녁 뭐먹지?</h1>
+            <p class="hero-subtitle">매일 반복되는 메뉴 고민, 저희가 도와드릴게요!<br>랜덤 메뉴 추천부터 재미있는 동물상 테스트까지.</p>
+        </section>
 
-            <hr class="divider">
+        <!-- Feature Cards -->
+        <section class="feature-grid">
+            <a href="#menu-section" class="feature-card" id="card-menu">
+                <span class="card-emoji">🎰</span>
+                <h2 class="card-title">메뉴 추천</h2>
+                <p class="card-desc">버튼 하나로 오늘의 메뉴를 추천받아 보세요!</p>
+            </a>
+            <a href="animal-test.html" class="feature-card">
+                <span class="card-emoji">🐾</span>
+                <h2 class="card-title">동물상 테스트</h2>
+                <p class="card-desc">AI가 분석하는 나의 동물상은?</p>
+            </a>
+        </section>
 
-            <h2>Comments</h2>
+        <!-- Menu Recommendation -->
+        <section class="menu-section" id="menu-section">
+            <h2 class="section-title">🎰 오늘의 메뉴 추천</h2>
+            <p class="section-subtitle">무엇을 먹을지 고민될 때, 운명에 맡겨보세요!</p>
+            <button id="recommend-menu-btn" class="btn-recommend">메뉴 추천받기</button>
+            <div id="menu-recommendation-container" class="menu-result"></div>
+        </section>
+
+        <!-- Comments -->
+        <section class="comments-section">
+            <h2 class="section-title">💬 댓글</h2>
             <div id="disqus_thread"></div>
-        </div>
+        </section>
     </main>
 
     <footer class="site-footer">
-        <nav class="site-nav">
-            <a href="about.html" class="nav-item">About Us</a>
-            <a href="contact.html" class="nav-item">Contact Us</a>
-            <a href="privacy.html" class="nav-item">Privacy Policy</a>
+        <nav class="footer-nav">
+            <a href="about.html" class="nav-item">소개</a>
+            <a href="contact.html" class="nav-item">문의하기</a>
+            <a href="privacy.html" class="nav-item">개인정보처리방침</a>
         </nav>
         <p>&copy; 2026 오늘 뭐먹지?. All Rights Reserved.</p>
     </footer>
-    
-    <script src="main.js" type="module"></script>
+
+    <script src="main.js"></script>
 
     <script>
         var disqus_config = function () {
             this.page.url = 'https://hun2i.github.io/product-builder-lecture/';
             this.page.identifier = 'menu-recommender-homepage';
         };
-        
+
         (function() {
             var d = document, s = d.createElement('script');
             s.src = 'https://pang-3.disqus.com/embed.js';

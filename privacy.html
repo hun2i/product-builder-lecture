@@ -12,7 +12,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - 오늘 뭐먹지?</title>
+    <title>개인정보처리방침 - 오늘 뭐먹지?</title>
     <link rel="stylesheet" href="style.css">
     <meta name="google-adsense-account" content="ca-pub-9743991772231585">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9743991772231585"
@@ -20,14 +20,23 @@
 </head>
 <body>
     <header class="site-header">
-        <nav class="site-nav">
-            <a href="index.html" class="nav-item">Home</a>
-            <a href="animal-test.html" class="nav-item">동물상 테스트</a>
-        </nav>
+        <div class="header-inner">
+            <a href="index.html" class="site-brand">
+                <span class="brand-emoji">🍽️</span>
+                <span>오늘 뭐먹지?</span>
+            </a>
+            <div class="header-right">
+                <nav class="site-nav">
+                    <a href="index.html" class="nav-item">홈</a>
+                    <a href="animal-test.html" class="nav-item">동물상 테스트</a>
+                </nav>
+                <button id="theme-toggle-btn" class="theme-toggle" aria-label="테마 전환">🌙</button>
+            </div>
+        </div>
     </header>
 
     <main>
-        <div class="container" style="text-align: left; max-width: 800px;">
+        <div class="content-section content-section--left">
             <h1>개인정보 처리방침</h1>
             <p><em>최종 수정일: 2026년 2월 9일</em></p>
 
@@ -46,22 +55,24 @@
 
             <h2>5. 개인정보의 보유 및 이용기간</h2>
             <p>원칙적으로, 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 관계법령의 규정에 의하여 보존할 필요가 있는 경우 일정 기간 동안 개인정보를 보관할 수 있습니다.</p>
-            
+
             <h2>6. 개인정보 파기절차 및 방법</h2>
             <p>수집된 개인정보는 목적이 달성된 후 별도의 DB로 옮겨져(종이의 경우 별도의 서류함) 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조) 일정 기간 저장된 후 파기됩니다.</p>
 
             <h2>7. 정보주체의 권리, 의무 및 그 행사방법</h2>
-            <p>사용자는 언제든지 등록되어 있는 자신의 개인정보를 조회하거나 수정할 것을 요청할 수 있으며, 수집/이용에 대한 동의 철회를 요청할 수 있습니다. 개인정보 관련 문의는 Contact 페이지를 통해 연락주시면 지체없이 조치하겠습니다.</p>
+            <p>사용자는 언제든지 등록되어 있는 자신의 개인정보를 조회하거나 수정할 것을 요청할 수 있으며, 수집/이용에 대한 동의 철회를 요청할 수 있습니다. 개인정보 관련 문의는 문의하기 페이지를 통해 연락주시면 지체없이 조치하겠습니다.</p>
         </div>
     </main>
 
     <footer class="site-footer">
-        <nav class="site-nav">
-            <a href="about.html" class="nav-item">About Us</a>
-            <a href="contact.html" class="nav-item">Contact Us</a>
-            <a href="privacy.html" class="nav-item active">Privacy Policy</a>
+        <nav class="footer-nav">
+            <a href="about.html" class="nav-item">소개</a>
+            <a href="contact.html" class="nav-item">문의하기</a>
+            <a href="privacy.html" class="nav-item active">개인정보처리방침</a>
         </nav>
         <p>&copy; 2026 오늘 뭐먹지?. All Rights Reserved.</p>
     </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>

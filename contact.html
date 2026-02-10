@@ -12,7 +12,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - 오늘 뭐먹지?</title>
+    <title>문의하기 - 오늘 뭐먹지?</title>
     <link rel="stylesheet" href="style.css">
     <meta name="google-adsense-account" content="ca-pub-9743991772231585">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9743991772231585"
@@ -20,33 +20,53 @@
 </head>
 <body>
     <header class="site-header">
-        <nav class="site-nav">
-            <a href="index.html" class="nav-item">Home</a>
-            <a href="animal-test.html" class="nav-item">동물상 테스트</a>
-        </nav>
+        <div class="header-inner">
+            <a href="index.html" class="site-brand">
+                <span class="brand-emoji">🍽️</span>
+                <span>오늘 뭐먹지?</span>
+            </a>
+            <div class="header-right">
+                <nav class="site-nav">
+                    <a href="index.html" class="nav-item">홈</a>
+                    <a href="animal-test.html" class="nav-item">동물상 테스트</a>
+                </nav>
+                <button id="theme-toggle-btn" class="theme-toggle" aria-label="테마 전환">🌙</button>
+            </div>
+        </div>
     </header>
 
     <main>
-        <div class="container">
-            <h1>Contact Us</h1>
+        <div class="content-section">
+            <h1>문의하기</h1>
             <p>파트너십, 광고 또는 기타 문의사항이 있으시면 아래 양식을 통해 편하게 연락주세요.</p>
-            
+
             <form action="https://formspree.io/f/mqedkpdv" method="POST" class="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Send Inquiry</button>
+                <div class="form-group">
+                    <label class="form-label" for="contact-name">이름</label>
+                    <input type="text" id="contact-name" name="name" placeholder="이름을 입력해주세요" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="contact-email">이메일</label>
+                    <input type="email" id="contact-email" name="email" placeholder="이메일을 입력해주세요" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="contact-message">메시지</label>
+                    <textarea id="contact-message" name="message" placeholder="문의 내용을 입력해주세요" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">문의 보내기</button>
             </form>
         </div>
     </main>
 
     <footer class="site-footer">
-        <nav class="site-nav">
-            <a href="about.html" class="nav-item">About Us</a>
-            <a href="contact.html" class="nav-item active">Contact Us</a>
-            <a href="privacy.html" class="nav-item">Privacy Policy</a>
+        <nav class="footer-nav">
+            <a href="about.html" class="nav-item">소개</a>
+            <a href="contact.html" class="nav-item active">문의하기</a>
+            <a href="privacy.html" class="nav-item">개인정보처리방침</a>
         </nav>
         <p>&copy; 2026 오늘 뭐먹지?. All Rights Reserved.</p>
     </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>

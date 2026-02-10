@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEP9Z4LRQY"></script>
@@ -12,41 +12,51 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>동물상 테스트</title>
-    <link rel="stylesheet" href="animal-test.css">
+    <title>동물상 테스트 - 오늘 뭐먹지?</title>
+    <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9743991772231585"
      crossorigin="anonymous"></script>
     <meta name="google-adsense-account" content="ca-pub-9743991772231585">
 </head>
 <body>
     <header class="site-header">
-        <nav class="site-nav">
-            <a href="index.html" class="nav-item">Home</a>
-            <a href="animal-test.html" class="nav-item active">동물상 테스트</a>
-        </nav>
+        <div class="header-inner">
+            <a href="index.html" class="site-brand">
+                <span class="brand-emoji">🍽️</span>
+                <span>오늘 뭐먹지?</span>
+            </a>
+            <div class="header-right">
+                <nav class="site-nav">
+                    <a href="index.html" class="nav-item">홈</a>
+                    <a href="animal-test.html" class="nav-item active">동물상 테스트</a>
+                </nav>
+                <button id="theme-toggle-btn" class="theme-toggle" aria-label="테마 전환">🌙</button>
+            </div>
+        </div>
     </header>
 
     <main>
         <div class="container">
-            <h1>동물상 테스트</h1>
+            <h1>🐾 동물상 테스트</h1>
             <hr class="divider">
-            
-            <div id="status-message">Teachable Machine Image Model</div>
-            <button type="button" id="start-button" onclick="init()">Start</button>
+
+            <div id="status-message">AI 카메라로 나의 동물상을 분석해보세요!</div>
+            <button type="button" id="start-button" class="btn-start" onclick="init()">시작하기</button>
             <div id="webcam-container"></div>
             <div id="label-container"></div>
         </div>
     </main>
 
     <footer class="site-footer">
-        <nav class="site-nav">
-            <a href="about.html" class="nav-item">About Us</a>
-            <a href="contact.html" class="nav-item">Contact Us</a>
-            <a href="privacy.html" class="nav-item">Privacy Policy</a>
+        <nav class="footer-nav">
+            <a href="about.html" class="nav-item">소개</a>
+            <a href="contact.html" class="nav-item">문의하기</a>
+            <a href="privacy.html" class="nav-item">개인정보처리방침</a>
         </nav>
         <p>&copy; 2026 오늘 뭐먹지?. All Rights Reserved.</p>
     </footer>
-    
+
+    <script src="main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script type="text/javascript">
@@ -56,52 +66,45 @@
         async function init() {
             const statusMessage = document.getElementById("status-message");
             const startButton = document.getElementById("start-button");
-            
+
             try {
-                // 버튼 비활성화 및 로딩 메시지 표시
                 startButton.disabled = true;
-                startButton.textContent = "Loading...";
+                startButton.textContent = "로딩 중...";
                 statusMessage.textContent = "모델을 로딩 중입니다...";
-                
-                // 모델 로드
+
                 const modelURL = URL + "model.json";
                 const metadataURL = URL + "metadata.json";
                 model = await tmImage.load(modelURL, metadataURL);
                 maxPredictions = model.getTotalClasses();
-                
+
                 statusMessage.textContent = "웹캠을 시작하는 중...";
-                
-                // 웹캠 설정
+
                 const flip = true;
                 webcam = new tmImage.Webcam(200, 200, flip);
-                await webcam.setup(); // 웹캠 권한 요청
+                await webcam.setup();
                 await webcam.play();
-                
-                // 웹캠 캔버스 추가
+
                 const webcamContainer = document.getElementById("webcam-container");
-                webcamContainer.innerHTML = ""; // 기존 내용 제거
+                webcamContainer.innerHTML = "";
                 webcamContainer.appendChild(webcam.canvas);
-                
-                // 예측 시작
+
                 window.requestAnimationFrame(loop);
-                
-                // 레이블 컨테이너 초기화
+
                 labelContainer = document.getElementById("label-container");
-                labelContainer.innerHTML = ""; // 기존 내용 제거
+                labelContainer.innerHTML = "";
                 for (let i = 0; i < maxPredictions; i++) {
                     labelContainer.appendChild(document.createElement("div"));
                 }
-                
+
                 statusMessage.textContent = "동물상 분석 중...";
-                startButton.style.display = "none"; // 시작 버튼 숨기기
-                
+                startButton.style.display = "none";
+
             } catch (error) {
                 console.error("Error initializing:", error);
                 statusMessage.textContent = "오류가 발생했습니다: " + error.message;
                 startButton.disabled = false;
                 startButton.textContent = "다시 시도";
-                
-                // 일반적인 오류 메시지 추가
+
                 if (error.name === "NotAllowedError") {
                     statusMessage.textContent = "웹캠 권한이 필요합니다. 브라우저에서 권한을 허용해주세요.";
                 } else if (error.name === "NotFoundError") {
@@ -120,34 +123,28 @@
 
         async function predict() {
             const prediction = await model.predict(webcam.canvas);
-            
-            // 가장 높은 확률의 동물상 찾기
+
             let maxProb = 0;
             let maxIndex = 0;
-            
+
             for (let i = 0; i < maxPredictions; i++) {
                 const probability = prediction[i].probability.toFixed(2);
                 const percentage = (probability * 100).toFixed(0);
                 const classPrediction = prediction[i].className + ": " + percentage + "%";
                 labelContainer.childNodes[i].innerHTML = classPrediction;
-                
-                // 가장 높은 확률 추적
+
                 if (prediction[i].probability > maxProb) {
                     maxProb = prediction[i].probability;
                     maxIndex = i;
                 }
             }
-            
-            // 가장 높은 확률의 항목 강조
+
+            // Use CSS classes instead of inline styles
             for (let i = 0; i < maxPredictions; i++) {
                 if (i === maxIndex) {
-                    labelContainer.childNodes[i].style.backgroundColor = "#4CAF50";
-                    labelContainer.childNodes[i].style.color = "#fff";
-                    labelContainer.childNodes[i].style.fontWeight = "bold";
+                    labelContainer.childNodes[i].classList.add('label-highlight');
                 } else {
-                    labelContainer.childNodes[i].style.backgroundColor = "#f0f2f5";
-                    labelContainer.childNodes[i].style.color = "#333";
-                    labelContainer.childNodes[i].style.fontWeight = "normal";
+                    labelContainer.childNodes[i].classList.remove('label-highlight');
                 }
             }
         }
